@@ -77,5 +77,8 @@ const main = async() => {
 }
 
 
-main();
+(async ()=>{
+    await main();
+})();
+
 

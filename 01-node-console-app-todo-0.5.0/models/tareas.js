@@ -7,7 +7,7 @@ const Tarea = require('./tarea');
 
 class Tareas {
 
-    _listado = {
+    dicTareas = {
         'abc': 123
     };
 
@@ -15,8 +15,8 @@ class Tareas {
     get listadoArr() {
 
         const listado = [];
-        Object.keys(this._listado).forEach( key => {
-            const tarea = this._listado[key];
+        Object.keys(this.dicTareas).forEach(key => {
+            const tarea = this.dicTareas[key];
             listado.push( tarea );
         });
 
@@ -25,13 +25,13 @@ class Tareas {
 
 
     constructor() {
-        this._listado = {};
+        this.dicTareas = {};
     }
 
     borrarTarea( id = '' ) {
 
-        if ( this._listado[id] ) {
-            delete this._listado[id];
+        if ( this.dicTareas[id] ) {
+            delete this.dicTareas[id];
         }
 
     }
@@ -39,7 +39,7 @@ class Tareas {
     cargarTareasFromArray( tareas = [] ) {
         
         tareas.forEach( tarea => {
-            this._listado[tarea.id] = tarea;
+            this.dicTareas[tarea.id] = tarea;
         });
     }
 
@@ -47,12 +47,11 @@ class Tareas {
     crearTarea( desc = '' ) {
 
         const tarea = new Tarea(desc);
-        this._listado[tarea.id] = tarea;
+        this.dicTareas[tarea.id] = tarea;
     }
 
     listadoCompleto() {
-        
-        console.log();
+
         this.listadoArr.forEach( (tarea, i) => {
 
             const idx = `${i + 1}`.green;
@@ -98,7 +97,7 @@ class Tareas {
 
         ids.forEach( id => {
 
-            const tarea = this._listado[id];
+            const tarea = this.dicTareas[id];
             if ( !tarea.completadoEn ) {
                 tarea.completadoEn = new Date().toISOString()
             }
@@ -108,7 +107,7 @@ class Tareas {
         this.listadoArr.forEach( tarea => {
 
             if ( !ids.includes(tarea.id) ) {
-                this._listado[tarea.id].completadoEn = null;
+                this.dicTareas[tarea.id].completadoEn = null;
             }
 
         });
