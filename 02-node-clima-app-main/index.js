@@ -34,6 +34,7 @@ const main = async() => {
                 // Clima
                 const clima = await busquedas.climaLugar( lugarSel.lat, lugarSel.lng );
 
+                console.log('clima',JSON.stringify(clima));
                 // Mostrar resultados
                 console.clear();
                 console.log('\nInformación de la ciudad\n'.green);
