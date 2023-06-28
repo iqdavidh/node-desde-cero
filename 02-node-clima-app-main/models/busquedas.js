@@ -45,11 +45,11 @@ class Busquedas {
         try {
             // Petición http
             const intance = axios.create({
-                baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${ lugar }.json`,
+                baseURL: `https://api.mapbox.com/geocoding/v5`,
                 params: this.paramsMapbox
             });
 
-            const resp = await intance.get();
+            const resp = await intance.get(`mapbox.places/${ lugar }.json`);
             return resp.data.features.map( lugar => ({
                 id: lugar.id,
                 nombre: lugar.place_name,

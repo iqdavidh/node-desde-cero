@@ -2,9 +2,9 @@ require('dotenv').config()
 const Busquedas = require('../../models/busquedas');
 describe('busqueda-ciudad', function () {
   it('should -return true', async function () {
-    const termino="quereta";
+    const termino = "quereta";
     const busquedas = new Busquedas();
-    const lista=await busquedas.ciudad(termino);
+    const lista = await busquedas.ciudad(termino);
     expect(lista).toBeTruthy();
     
     /*
