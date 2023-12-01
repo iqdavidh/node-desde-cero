@@ -1,6 +1,7 @@
 const { response } = require('express');
 const { Producto } = require('../models');
 
+
 const obtenerProductos = async(req, res = response ) => {
 
     const { limite = 5, desde = 0 } = req.query;
