@@ -11,9 +11,10 @@ const socketController = (socket) => {
 
     socket.on('enviar-mensaje', ( payload, callback ) => {
         
-        const id = 123456789;
+        const id = 'solo se envia al emisor';
         callback( id );
 
+        console.log(JSON.stringify(payload))
         socket.broadcast.emit('enviar-mensaje', payload );
 
     })

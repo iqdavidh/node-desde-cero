@@ -11,7 +11,7 @@ const socket = io();
 
 
 socket.on('connect', () => {
-    console.log('Conectado');
+    // console.log('Conectado');
 
     lblOffline.style.display = 'none';
     lblOnline.style.display  = '';
@@ -27,7 +27,7 @@ socket.on('disconnect', () => {
 
 
 socket.on('enviar-mensaje', (payload) => {
-    console.log( `aqui en el front ${JSON.stringify(payload)}` )
+    console.log( payload )
 })
 
 
