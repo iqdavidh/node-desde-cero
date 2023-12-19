@@ -17,7 +17,7 @@ miFormulario.addEventListener('submit', ev => {
             formData[el.name] = el.value
     }
 
-    fetch( url + 'login', {
+    fetch( url + 'google', {
         method: 'POST',
         body: JSON.stringify( formData ),
         headers: { 'Content-Type': 'application/json' }

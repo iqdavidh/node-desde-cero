@@ -1,11 +1,10 @@
-const { Socket } = require('socket.io');
 const { comprobarJWT } = require('../helpers');
 const { ChatMensajes } = require('../models');
 
 const chatMensajes = new ChatMensajes();
 
 
-const socketController = async( socket = new Socket(), io ) => {
+const socketController = async( socket , io ) => {
 
     const usuario = await comprobarJWT(socket.handshake.headers['x-token']);
     if ( !usuario ) {
@@ -17,7 +16,7 @@ const socketController = async( socket = new Socket(), io ) => {
     io.emit('usuarios-activos',     chatMensajes.usuariosArr );
     socket.emit('recibir-mensajes', chatMensajes.ultimos10 );
 
-    // Conectarlo a una sala especial
+    // Conectarlo a un canal privado
     socket.join( usuario.id ); // global, socket.id, usuario.id
     
 
